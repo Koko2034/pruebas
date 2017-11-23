@@ -1,0 +1,61 @@
+Arguments: 
+  /usr/bin/nodejs /usr/bin/yarn
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+
+Yarn version: 
+  1.2.0
+
+Node version: 
+  7.10.1
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+      "name": "pract1",
+      "version": "0.0.1",
+      "description": "Practica 4 con test de jasmine karma",
+      "main": "index.js",
+      "scripts": {
+        "test": "./node_modules/.bin/karma start",
+        "mutant": "./node_modules/.bin/stryker run",
+        "docker": "docker-compose -f docker/docker-compose.yml up"
+      },
+      "author": "rmontoya",
+      "license": "ISC",
+      "devDependencies": {
+        "eslint": "^4.8.0",
+        "grunt": "~0.4.5",
+        "grunt-mutation-testing": "~1.3.0",
+        "jasmine": "^2.8.0",
+        "jasmine-core": "^2.8.0",
+        "karma": "^1.7.1",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-firefox-launcher": "^1.0.1",
+        "karma-jasmine": "^1.1.0",
+        "stryker": "^0.13.0",
+        "stryker-api": "^0.11.0",
+        "stryker-jasmine": "^0.7.1",
+        "stryker-karma-runner": "^0.9.1"
+      },
+      "dependencies": {
+        "font-awesome": "^4.7.0"
+      }
+    }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  SyntaxError: /home/andujar34/Escritorio/Modulo FP/2ºCurso/Cliente/practica4/package.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /usr/lib/node_modules/yarn/lib/cli.js:770:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib/node_modules/yarn/lib/cli.js:92:30)
+      at /usr/lib/node_modules/yarn/lib/cli.js:103:13

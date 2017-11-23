@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Práctica 4</title>
+    <link rel="stylesheet" href="./src/styles/styles.css">
+    <script src="./src/model/accounting.model.js"></script>
+    <script src="./src/services/accountingService.js"></script>
+    <script src="./src/app.settings.js"></script>
+    <script src="./src/controller.js"></script>
+    
+</head>
+<body>
+    <header>Tienda Electronica Noguera</header>
+    <main>
+        <section class="order">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Añadir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Procesador</td>
+                        <td id="idProcesadorPrice">50</td>
+                        <td><input type="number" min=0 step=1 id="idProcesador" value=0></td>
+                        <td><button type="button"  onclick="controller.addPurchase('idProcesador')">Añadir</button></td>
+                    </tr>
+                    <tr>
+                        <td>Monitor</td>
+                        <td id="idMonitorPrice">150</td>
+                        <td><input type="number" min=0 step=1 id="idMonitor" value=0></td>
+                        <td><button type="button"  onclick="controller.addPurchase('idMonitor')">Añadir</button></td>
+                    </tr>
+                    <tr>
+                        <td>Disco duro</td>
+                        <td id="idDiscoDuroPrice">100</td>
+                        <td><input type="number" min=0 step=1 id="idDiscoDuro" value=0></td>
+                        <td><button type="button"  onclick="controller.addPurchase('idDiscoDuro')">Añadir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="purchaseOrder ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Total</th>
+                        <th>Unidades</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Procesador</td>
+                        <td id="idProcesadorPurchasePrice">0</td>
+                        <td id="idProcesadorPurchase">0</td>
+                        <td><button type="button" onclick="controller.deletePurchase('idProcesadorPurchase')">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Monitor</td>
+                        <td id="idMonitorPurchasePrice">0</td>
+                        <td id="idMonitorPurchase">0</td>
+                        <td><button type="button" onclick="controller.deletePurchase('idMonitorPurchase')">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Disco duro</td>
+                        <td id="idDiscoDuroPurchasePrice">0</td>
+                        <td id="idDiscoDuroPurchase">0</td>
+                        <td><button type="button"  onclick="controller.deletePurchase('idDiscoDuroPurchase')">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="idTotal">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="paymentMethods ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Como pagar</th>
+                        <th>Comision</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="radio" name="payment" value="Transferencia_Bancaria" checked onchange="controller.pay('Transferencia_Bancaria')">Transferencia Bancaria</td>
+                        <td>2€</td>
+                       </tr>
+                    <tr>
+                        <td><input type="radio" name="payment" value="PayPal" onchange="controller.pay('PayPal')">Paypal</td>
+                        <td>0,35€+3.4%</td>
+                       </tr>
+                    <tr>
+                        <td><input type="radio" name="payment" value="Tarjeta_credito" onchange="controller.pay('Tarjeta_credito')">Tarjeta de credito</td>
+                        <td>1€+1.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="invoice">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Confirmacion</th>
+                        <th>Totales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Precio</td>
+                        <td id="cantidadTotalSinComisiones">0</td>
+                       </tr>
+                    <tr>
+                        <td>Metodo</td>
+                        <td id="metodoPago">Transferencia Bancaria</td>
+                       </tr>
+                    <tr>
+                        <td>Comision</td>
+                        <td id="comision">2</td>
+                    </tr>
+                    <tr>
+                        <td>Coste Total</td>
+                        <td id="totalInvoice">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+<script>
+    window.onload = () => {
+        const accountingService = new AccountingService();
+        controller.init(accountingService);
+    }
+</script>
+</html>
